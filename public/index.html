@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portal-88.xxx</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- particles background -->
+  <div id="particles-js"></div>
 
+  <div class="app-shell">
+    <header>
+      <div class="brand">
+        <div class="logo">88</div>
+        <div>
+          <div style="font-weight:700;font-size:15px">Portal-88.xxx</div>
+          <div class="muted" style="font-size:12px">Portal Społecznościowy</div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div id="online" class="muted">Osoby online: 0</div>
+        <button class="btn btn-ghost" onclick="window.location.href='login.html'">Zaloguj</button>
+        <button class="btn btn-primary" onclick="logout()">Wyloguj</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="feed card card-lg">
+        <div class="card composer">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="user-avatar" id="avatar">U</div>
+            <div style="flex:1">
+              <textarea id="content" placeholder="Napisz coś..."></textarea>
+              <div class="row">
+                <button class="btn btn-primary" id="publishBtn">Opublikuj</button>
+                <button class="btn btn-ghost" id="clearBtn">Wyczyść</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:16px;margin-bottom:8px;color:var(--muted)">Ostatnie posty</h3>
+        <div id="feed"></div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="card">
+          <div class="user-box">
+            <div class="user-avatar" id="miniAvatar">U</div>
+            <div>
+              <div id="usernameDisplay" style="font-weight:700">Anonim</div>
+              <div class="muted">Twoje konto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="muted">Shortcuts</div>
+          <div style="margin-top:8px">
+            <button class="btn btn-ghost" onclick="window.location.href='register.html'">Zarejestruj</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // init particles (tweaked your config, same semantics)
+  particlesJS('particles-js',{
+    particles:{
+      number:{value:100,density:{enable:true,value_area:450}},
+      color:{value:"#ffffff"},
+      shape:{type:"circle"},
+      opacity:{value:0.25},
+      size:{value:1.5,random:true},
+      line_linked:{enable:true,distance:150,color:"#ffffff",opacity:0.05,width:1.5},
+      move:{enable:true,speed:1.5,random:true,straight:false,out_mode:"out"}
+    }
+  });
+});
+</script>
+
+<script src="main.js"></script>
+</body>
+</html>
