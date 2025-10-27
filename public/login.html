@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portal88 - Logowanie</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="app-shell">
+    <header>
+      <div class="brand">
+        <div class="logo">88</div>
+        <div><div style="font-weight:700">Portal-88.xxx</div><div class="muted" style="font-size:12px">Logowanie</div></div>
+      </div>
+    </header>
+
+    <div class="auth-page">
+      <div class="auth-card">
+        <h3>Zaloguj się</h3>
+        <input id="username" class="input" placeholder="Nazwa użytkownika" />
+        <input id="password" class="input" placeholder="Hasło" type="password" />
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button class="btn btn-ghost" onclick="window.location.href='register.html'">Zarejestruj</button>
+          <button class="btn btn-primary" onclick="login()">Zaloguj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  particlesJS('particles-js',{
+    particles:{
+      number:{value:80,density:{enable:true,value_area:450}},
+      color:{value:"#ffffff"},
+      shape:{type:"circle"},
+      opacity:{value:0.18},
+      size:{value:1.8,random:true},
+      line_linked:{enable:true,distance:120,color:"#ffffff",opacity:0.04,width:1},
+      move:{enable:true,speed:1.2,random:true,straight:false,out_mode:"out"}
+    }
+  });
+});
+
+async function login(){
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  if(!username||!password) return alert('Uzupełnij dane');
+  const res = await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});
+  const data = await res.json();
+  if(data.success) window.location.href='index.html'; else alert(data.error||'Błąd logowania');
+}
+</script>
+</body>
+</html>
